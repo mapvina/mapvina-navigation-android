@@ -1,0 +1,38 @@
+ext {
+    mapVinaDeveloperId = 'mapvina'
+    mapVinaDeveloperName = 'MapVina'
+    mapVinaDeveloperMail = 'team@mapvina.com'
+    mapVinaDeveloperOrganization = 'MapVina'
+
+    navigationArtifactGroupId = 'com.mapvina.navigation'
+    navigationArtifactTitle = 'MapVina Navigation SDK'
+    navigationArtifactDescription = 'MapVina Navigation build on Kotlin Multiplatform'
+    navigationDeveloperOrganizationUrl = 'http://www.mapvina.com'
+    navigationArtifactUrl = 'https://github.com/mapvina/mapvina-navigation-android'
+    navigationArtifactVcsUrl = 'https://github.com/mapvina/mapvina-navigation-android.git'
+    navigationArtifactScmUrl = 'scm:git@github.com:mapvina/mapvina-navigation-android.git'
+    navigationArtifactLicenseName = 'MIT'
+    navigationArtifactLicenseUrl = 'https://opensource.org/license/MIT'
+
+    versionName = getVersionName()
+    isSnapshot = isSnapshot()
+}
+
+def getVersionName() {
+    def version = System.getenv('VERSION')
+    def deducedVersion = isSnapshot() ? getSnapshotVersion(version) : version
+    project.logger.info("Project version detected: ${deducedVersion}")
+    return deducedVersion
+}
+
+def isSnapshot() {
+    def snapshotProp = findProperty("snapshot")
+    return snapshotProp ? snapshotProp.asBoolean() : false
+}
+
+private static def getSnapshotVersion(String version) {
+    def matcher = version =~ /^[v|V](\d+).(\d+)?.*/
+    def major = (matcher[0][1] as Integer)
+    def minor = (matcher[0][2] as Integer) + 1
+    return "${major}.${minor}.0-SNAPSHOT"
+}

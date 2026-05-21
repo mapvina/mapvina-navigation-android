@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mapvina.navigation.android.example.MockNavigationActivity">
+
+    <com.mapvina.android.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:mapvina_cameraTargetLat="52.3585999"
+        app:mapvina_cameraTargetLng="9.7481622"
+        app:mapvina_cameraZoom="12"
+        app:mapvina_enableTilePrefetch="true"
+        app:mapvina_enableZMediaOverlay="true"
+        app:mapvina_renderTextureMode="true"
+        app:mapvina_renderTextureTranslucentSurface="true"
+        app:mapvina_uiAttribution="false"
+        app:mapvina_uiCompass="false"
+        app:mapvina_uiDoubleTapGestures="true"
+        app:mapvina_uiLogo="false"
+        app:mapvina_uiRotateGestures="true"
+        app:mapvina_uiScrollGestures="true"
+        app:mapvina_uiTiltGestures="true"
+        app:mapvina_uiZoomGestures="true" />
+
+    <Button
+        android:id="@+id/btnFollow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Follow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

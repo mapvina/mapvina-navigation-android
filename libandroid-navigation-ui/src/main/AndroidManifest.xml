@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mapvina.navigation.android.navigation.ui.v5">
+
+    <application>
+        <activity android:name="com.mapvina.navigation.android.navigation.ui.v5.MapVinaNavigationActivity" />
+
+        <service
+            android:name=".notification.service.NavigationNotificationService"
+            android:foregroundServiceType="location" />
+    </application>
+
+</manifest>

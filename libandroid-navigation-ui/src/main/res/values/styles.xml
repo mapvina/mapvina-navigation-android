@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="mapvina_LocationLayer">
+        <attr name="mapvina_foregroundDrawable" format="reference" />
+        <attr name="mapvina_foregroundTintColor" format="color" />
+        <attr name="mapvina_backgroundDrawable" format="reference" />
+        <attr name="mapvina_backgroundTintColor" format="color" />
+        <attr name="mapvina_bearingDrawable" format="reference" />
+        <attr name="mapvina_bearingTintColor" format="color" />
+        <attr name="mapvina_gpsDrawable" format="reference" />
+        <attr name="mapvina_foregroundDrawableStale" format="reference" />
+        <attr name="mapvina_foregroundStaleTintColor" format="color" />
+        <attr name="mapvina_backgroundDrawableStale" format="reference" />
+        <attr name="mapvina_backgroundStaleTintColor" format="color" />
+        <attr name="mapvina_accuracyAlpha" format="float" />
+        <attr name="mapvina_accuracyColor" format="color" />
+        <attr name="mapvina_elevation" format="dimension" />
+        <attr name="mapvina_enableStaleState" format="boolean" />
+        <attr name="mapvina_staleStateTimeout" format="integer" min="0" />
+        <attr name="mapvina_iconPaddingLeft" format="integer" />
+        <attr name="mapvina_iconPaddingTop" format="integer" />
+        <attr name="mapvina_iconPaddingRight" format="integer" />
+        <attr name="mapvina_iconPaddingBottom" format="integer" />
+        <attr name="mapvina_layer_below" format="string" />
+        <attr name="mapvina_maxZoom" format="float" />
+        <attr name="mapvina_minZoom" format="float" />
+        <attr name="mapvina_maxZoomIconScale" format="float" />
+        <attr name="mapvina_minZoomIconScale" format="float" />
+        <attr name="mapvina_trackingInitialMoveThreshold" format="dimension" />
+        <attr name="mapvina_trackingMultiFingerMoveThreshold" format="dimension" />
+    </declare-styleable>
+    <dimen name="mapvina_locationLayerTrackingInitialMoveThreshold">25dp</dimen>
+    <dimen name="mapvina_locationLayerTrackingMultiFingerMoveThreshold">125dp</dimen>
+
+    <style name="mapvina_LocationLayer">
+        <item name="mapvina_foregroundDrawable">@drawable/mapvina_user_icon</item>
+        <item name="mapvina_backgroundDrawable">@drawable/mapvina_user_stroke_icon</item>
+        <item name="mapvina_bearingDrawable">@drawable/mapvina_user_bearing_icon</item>
+        <item name="mapvina_gpsDrawable">@drawable/mapvina_user_puck_icon</item>
+
+        <item name="mapvina_foregroundDrawableStale">@drawable/mapvina_user_icon_stale</item>
+        <item name="mapvina_backgroundDrawableStale">@drawable/mapvina_user_stroke_icon</item>
+
+        <item name="mapvina_accuracyAlpha">0.15</item>
+        <item name="mapvina_accuracyColor">@color/mapvina_location_layer_blue</item>
+
+        <item name="mapvina_elevation">12dp</item>
+
+        <item name="mapvina_enableStaleState">true</item>
+        <item name="mapvina_staleStateTimeout">30000</item>
+
+
+        <!-- Location icon padding -->
+        <item name="mapvina_iconPaddingLeft">0</item>
+        <item name="mapvina_iconPaddingTop">0</item>
+        <item name="mapvina_iconPaddingRight">0</item>
+        <item name="mapvina_iconPaddingBottom">0</item>
+
+        <!-- Map zoom levels -->
+        <item name="mapvina_maxZoom">18</item>
+        <item name="mapvina_minZoom">2</item>
+
+        <!-- Location icon scale based on map zoom levels -->
+        <item name="mapvina_maxZoomIconScale">1</item>
+        <item name="mapvina_minZoomIconScale">0.6</item>
+
+        <!-- Camera tracking settings -->
+        <item name="mapvina_trackingInitialMoveThreshold">
+            @dimen/mapvina_locationLayerTrackingInitialMoveThreshold
+        </item>
+        <item name="mapvina_trackingMultiFingerMoveThreshold">
+            @dimen/mapvina_locationLayerTrackingMultiFingerMoveThreshold
+        </item>
+
+    </style>
+
+
+    <style name="NavigationMapRoute">
+        <!-- Colors -->
+        <item name="routeColor">@color/mapvina_navigation_route_layer_blue</item>
+        <item name="routeModerateCongestionColor">@color/mapvina_navigation_route_layer_congestion_yellow</item>
+        <item name="routeSevereCongestionColor">@color/mapvina_navigation_route_layer_congestion_red</item>
+        <item name="routeShieldColor">@color/mapvina_navigation_route_shield_layer_color</item>
+
+        <!-- Scales -->
+        <item name="routeScale">1.0</item>
+        <item name="upcomingManeuverArrowColor">@color/mapvina_navigation_route_upcoming_maneuver_arrow_color</item>
+        <item name="upcomingManeuverArrowBorderColor">@color/mapvina_navigation_route_upcoming_maneuver_arrow_border_color</item>
+
+        <!-- Expression styling -->
+        <item name="roundedLineCap">true</item>
+    </style>
+
+    <style name="NavigationLocationLayerStyle" parent="@style/mapvina_LocationComponent">
+        <item name="mapvina_trackingAnimationDurationMultiplier">2.0</item>
+        <item name="mapvina_trackingGesturesManagement">true</item>
+    </style>
+
+    <style name="NavigationViewLight" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="navigationViewPrimary">@color/mapvina_navigation_view_color_primary</item>
+        <item name="navigationViewSecondary">@color/mapvina_navigation_view_color_secondary</item>
+        <item name="navigationViewAccent">@color/mapvina_navigation_view_color_accent</item>
+        <item name="navigationViewPrimaryText">@color/mapvina_navigation_view_color_secondary</item>
+        <item name="navigationViewSecondaryText">@color/mapvina_navigation_view_color_accent_text</item>
+        <item name="navigationViewDivider">@color/mapvina_navigation_view_color_divider</item>
+
+        <item name="navigationViewListBackground">@color/mapvina_navigation_view_color_list_background</item>
+
+        <item name="navigationViewBannerBackground">@color/mapvina_navigation_view_color_banner_background</item>
+        <item name="navigationViewBannerPrimaryText">@color/mapvina_navigation_view_color_banner_primary_text</item>
+        <item name="navigationViewBannerSecondaryText">@color/mapvina_navigation_view_color_banner_secondary_text</item>
+        <item name="navigationViewBannerManeuverPrimary">@color/mapvina_navigation_view_color_banner_maneuver_primary</item>
+        <item name="navigationViewBannerManeuverSecondary">@color/mapvina_navigation_view_color_banner_maneuver_secondary</item>
+
+        <item name="navigationViewProgress">@color/mapvina_navigation_view_color_progress</item>
+        <item name="navigationViewProgressBackground">@color/mapvina_navigation_view_color_progress_background</item>
+
+        <item name="navigationViewRouteStyle">@style/NavigationMapRoute</item>
+
+        <item name="navigationViewLocationLayerStyle">@style/NavigationLocationLayerStyle</item>
+
+        <item name="navigationViewDestinationMarker">@drawable/map_marker_light</item>
+
+        <item name="navigationViewRouteOverviewDrawable">@drawable/ic_route_preview</item>
+
+        <item name="navigationViewMapStyle">@string/navigation_guidance_day</item>
+    </style>
+
+    <style name="NavigationViewDark" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="navigationViewPrimary">@color/mapvina_navigation_view_color_primary_dark</item>
+        <item name="navigationViewSecondary">@color/mapvina_navigation_view_color_secondary_dark</item>
+        <item name="navigationViewAccent">@color/mapvina_navigation_view_color_accent_dark</item>
+        <item name="navigationViewPrimaryText">@color/mapvina_navigation_view_color_secondary_dark</item>
+        <item name="navigationViewSecondaryText">@color/mapvina_navigation_view_color_accent_text_dark</item>
+        <item name="navigationViewDivider">@color/mapvina_navigation_view_color_divider_dark</item>
+
+        <item name="navigationViewListBackground">@color/mapvina_navigation_view_color_list_background_dark</item>
+
+        <item name="navigationViewBannerBackground">@color/mapvina_navigation_view_color_banner_background_dark</item>
+        <item name="navigationViewBannerPrimaryText">@color/mapvina_navigation_view_color_banner_primary_text_dark</item>
+        <item name="navigationViewBannerSecondaryText">@color/mapvina_navigation_view_color_banner_secondary_text_dark</item>
+        <item name="navigationViewBannerManeuverPrimary">@color/mapvina_navigation_view_color_banner_maneuver_primary_dark</item>
+        <item name="navigationViewBannerManeuverSecondary">@color/mapvina_navigation_view_color_banner_maneuver_secondary_dark</item>
+
+        <item name="navigationViewProgress">@color/mapvina_navigation_view_color_progress_dark</item>
+        <item name="navigationViewProgressBackground">@color/mapvina_navigation_view_color_progress_background_dark</item>
+
+        <item name="navigationViewRouteStyle">@style/NavigationMapRoute</item>
+
+        <item name="navigationViewLocationLayerStyle">@style/NavigationLocationLayerStyle</item>
+
+        <item name="navigationViewDestinationMarker">@drawable/map_marker_dark</item>
+
+        <item name="navigationViewRouteOverviewDrawable">@drawable/ic_route_preview_dark</item>
+
+        <item name="navigationViewMapStyle">@string/navigation_guidance_night</item>
+    </style>
+
+</resources>

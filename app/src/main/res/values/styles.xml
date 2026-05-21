@@ -1,0 +1,56 @@
+<resources>
+
+    <style name="CustomNavigationMapRoute" parent="NavigationMapRoute">
+        <item name="upcomingManeuverArrowBorderColor">@color/red</item>
+    </style>
+
+    <style name="CustomNavigationView" parent="NavigationViewLight">
+        <item name="navigationViewRouteStyle">@style/CustomNavigationMapRoute</item>
+    </style>
+
+    <style name="CustomInstructionView" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="navigationViewPrimary">@color/mapvina_navigation_view_color_primary</item>
+        <item name="navigationViewSecondary">@color/mapvina_navigation_view_color_secondary</item>
+        <item name="navigationViewAccent">@color/mapvina_navigation_view_color_accent</item>
+        <item name="navigationViewPrimaryText">@color/mapvina_navigation_view_color_secondary</item>
+        <item name="navigationViewSecondaryText">@color/mapvina_navigation_view_color_accent_text</item>
+        <item name="navigationViewDivider">@color/mapvina_navigation_view_color_divider</item>
+
+        <item name="navigationViewListBackground">@color/mapvina_navigation_view_color_list_background</item>
+
+        <item name="navigationViewBannerBackground">@color/mapvina_navigation_view_color_banner_background</item>
+        <item name="navigationViewBannerPrimaryText">@color/mapvina_navigation_view_color_banner_primary_text</item>
+        <item name="navigationViewBannerSecondaryText">@color/mapvina_navigation_view_color_banner_secondary_text</item>
+        <item name="navigationViewBannerManeuverPrimary">@color/mapvina_navigation_view_color_banner_maneuver_primary</item>
+        <item name="navigationViewBannerManeuverSecondary">@color/mapvina_navigation_view_color_banner_maneuver_secondary</item>
+
+        <item name="navigationViewProgress">@color/mapvina_navigation_view_color_progress</item>
+        <item name="navigationViewProgressBackground">@color/mapvina_navigation_view_color_progress_background</item>
+
+        <item name="navigationViewRouteStyle">@style/NavigationMapRoute</item>
+
+        <item name="navigationViewLocationLayerStyle">@style/mapvina_LocationLayer</item>
+
+        <item name="navigationViewDestinationMarker">@drawable/map_marker_light</item>
+
+        <item name="navigationViewRouteOverviewDrawable">@drawable/ic_route_preview</item>
+
+        <item name="navigationViewMapStyle">@string/navigation_guidance_day</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="TestNavigationViewDark" parent="NavigationViewDark">
+        <item name="navigationViewMapStyle">@string/map_style_dark</item>
+    </style>
+
+    <style name="TestNavigationViewLight" parent="NavigationViewLight">
+        <item name="navigationViewMapStyle">@string/map_style_light</item>
+    </style>
+</resources>

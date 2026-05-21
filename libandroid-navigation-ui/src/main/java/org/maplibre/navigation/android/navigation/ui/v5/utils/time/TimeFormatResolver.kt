@@ -1,0 +1,11 @@
+package com.mapvina.navigation.android.navigation.ui.v5.utils.time
+
+import com.mapvina.navigation.core.navigation.MapVinaNavigationOptions
+import java.util.Calendar
+
+
+interface TimeFormatResolver {
+    fun nextChain(chain: TimeFormatResolver?)
+
+    fun obtainTimeFormatted(type: MapVinaNavigationOptions.TimeFormat, time: Calendar): String?
+}
