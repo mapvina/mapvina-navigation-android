@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import com.mapvina.navigation.core.models.DirectionsResponse;
 import com.mapvina.navigation.core.models.DirectionsRoute;
 import com.mapvina.navigation.core.models.RouteOptions;
-import com.mapvina.geojson.Point;
+import com.mapvina.spatialk.geojson.Point;
 import com.mapvina.navigation.core.utils.Constants;
 
 import java.io.IOException;

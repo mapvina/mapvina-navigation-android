@@ -1,6 +1,5 @@
 package com.mapvina.navigation.android.navigation.ui.v5;
 
-import static com.mapvina.navigation.android.navigation.ui.v5.GeoJsonExtKt.toJvmPoints;
 
 import com.mapvina.navigation.core.location.Location;
 import androidx.annotation.NonNull;
@@ -11,7 +10,7 @@ import com.mapvina.navigation.android.navigation.ui.v5.route.NavigationRoute;
 import com.mapvina.navigation.core.models.DirectionsResponse;
 import com.mapvina.navigation.core.models.DirectionsRoute;
 import com.mapvina.navigation.core.models.RouteOptions;
-import com.mapvina.geojson.Point;
+import com.mapvina.spatialk.geojson.Point;
 
 import com.mapvina.navigation.core.route.RouteListener;
 import com.mapvina.navigation.core.routeprogress.RouteProgress;
@@ -120,7 +119,7 @@ public class NavigationViewRouter implements RouteListener {
   private void cacheRouteDestination() {
     boolean hasValidCoordinates = routeOptions != null && !routeOptions.getCoordinates().isEmpty();
     if (hasValidCoordinates) {
-      List<Point> coordinates = toJvmPoints(routeOptions.getCoordinates());
+      List<Point> coordinates = routeOptions.getCoordinates();
       int destinationCoordinate = coordinates.size() - 1;
       Point destinationPoint = coordinates.get(destinationCoordinate);
       listener.onDestinationSet(destinationPoint);

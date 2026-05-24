@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.OnLifecycleEvent;
 
 import com.mapvina.navigation.core.models.DirectionsRoute;
-import com.mapvina.geojson.Point;
+import com.mapvina.spatialk.geojson.Point;
 
 class NavigationViewSubscriber implements LifecycleObserver {
 

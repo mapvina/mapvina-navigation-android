@@ -1,7 +1,7 @@
 package com.mapvina.navigation.android.navigation.ui.v5.map;
 
 import com.mapvina.navigation.core.models.DirectionsRoute;
-import com.mapvina.geojson.Point;
+import com.mapvina.spatialk.geojson.Point;
 import com.mapvina.android.location.LocationComponent;
 import com.mapvina.android.location.modes.RenderMode;
 import com.mapvina.android.maps.MapVinaMap;

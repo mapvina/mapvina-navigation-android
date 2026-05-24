@@ -33,7 +33,7 @@ import com.mapvina.navigation.android.navigation.ui.v5.summary.SummaryBottomShee
 import com.mapvina.navigation.core.location.Location;
 import com.mapvina.navigation.core.models.DirectionsRoute;
 import com.mapvina.navigation.core.models.RouteOptions;
-import com.mapvina.geojson.Point;
+import com.mapvina.spatialk.geojson.Point;
 import com.mapvina.android.camera.CameraPosition;
 import com.mapvina.android.location.modes.RenderMode;
 import com.mapvina.android.maps.MapView;

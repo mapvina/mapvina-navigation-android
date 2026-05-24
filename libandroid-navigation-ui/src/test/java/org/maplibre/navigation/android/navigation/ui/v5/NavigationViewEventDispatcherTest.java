@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 
 import com.mapvina.navigation.core.models.BannerInstructions;
 import com.mapvina.navigation.core.models.DirectionsRoute;
-import com.mapvina.geojson.Point;
+import com.mapvina.spatialk.geojson.Point;
 import com.mapvina.navigation.android.navigation.ui.v5.listeners.BannerInstructionsListener;
 import com.mapvina.navigation.android.navigation.ui.v5.listeners.InstructionListListener;
 import com.mapvina.navigation.android.navigation.ui.v5.listeners.NavigationListener;

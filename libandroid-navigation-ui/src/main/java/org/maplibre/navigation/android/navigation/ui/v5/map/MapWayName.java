@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 
 import com.mapvina.geojson.Feature;
 import com.mapvina.geojson.Point;
-import com.mapvina.geojson.common.CommonExtKt;
 import com.mapvina.navigation.core.location.Location;
 import com.mapvina.navigation.core.navigation.MapVinaNavigation;
 

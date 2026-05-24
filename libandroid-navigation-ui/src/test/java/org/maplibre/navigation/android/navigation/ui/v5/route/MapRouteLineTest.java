@@ -25,8 +25,8 @@ import androidx.annotation.NonNull;
 
 import com.mapvina.navigation.android.navigation.ui.v5.R;
 import com.mapvina.navigation.core.models.DirectionsRoute;
-import com.mapvina.geojson.FeatureCollection;
-import com.mapvina.geojson.LineString;
+import com.mapvina.spatialk.geojson.FeatureCollection;
+import com.mapvina.spatialk.geojson.LineString;
 import com.mapvina.android.maps.Style;
 import com.mapvina.android.style.layers.LineLayer;
 import com.mapvina.android.style.layers.SymbolLayer;

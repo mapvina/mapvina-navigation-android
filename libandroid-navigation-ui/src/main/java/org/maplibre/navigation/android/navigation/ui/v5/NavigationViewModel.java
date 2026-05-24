@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.mapvina.geojson.Point;
+import com.mapvina.spatialk.geojson.Point;
 import com.mapvina.navigation.android.navigation.ui.v5.camera.DynamicCamera;
 import com.mapvina.navigation.android.navigation.ui.v5.instruction.BannerInstructionModel;
 import com.mapvina.navigation.android.navigation.ui.v5.instruction.InstructionModel;
@@ -318,7 +318,7 @@ public class NavigationViewModel extends AndroidViewModel {
         @Override
         public void userOffRoute(Location location) {
             speechPlayer.onOffRoute();
-            Point newOrigin = Point.fromLngLat(location.getLongitude(), location.getLatitude());
+            Point newOrigin = new Point(location.getLongitude(), location.getLatitude());
             handleOffRouteEvent(newOrigin);
         }
     };

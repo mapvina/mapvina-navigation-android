@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.mapvina.navigation.android.navigation.ui.v5.NavigationViewModel;
 import com.mapvina.navigation.android.navigation.ui.v5.NavigationViewRouteEngineListener;
 import com.mapvina.navigation.core.models.DirectionsRoute;
-import com.mapvina.geojson.Point;
+import com.mapvina.spatialk.geojson.Point;
 
 import org.junit.Test;
 

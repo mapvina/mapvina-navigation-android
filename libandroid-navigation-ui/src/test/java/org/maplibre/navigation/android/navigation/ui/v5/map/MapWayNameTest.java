@@ -3,8 +3,8 @@ package com.mapvina.navigation.android.navigation.ui.v5.map;
 import android.graphics.PointF;
 import androidx.annotation.NonNull;
 
-import com.mapvina.geojson.Feature;
-import com.mapvina.geojson.Point;
+import com.mapvina.spatialk.geojson.Feature;
+import com.mapvina.spatialk.geojson.Point;
 import com.mapvina.navigation.core.location.Location;
 import com.mapvina.android.style.layers.PropertyValue;
 import com.mapvina.android.style.layers.SymbolLayer;

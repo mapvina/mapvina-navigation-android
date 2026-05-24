@@ -3,7 +3,7 @@ package com.mapvina.navigation.android.navigation.ui.v5.listeners;
 import com.mapvina.navigation.android.navigation.ui.v5.NavigationView;
 import com.mapvina.navigation.android.navigation.ui.v5.NavigationViewOptions;
 import com.mapvina.navigation.core.models.DirectionsRoute;
-import com.mapvina.geojson.Point;
+import com.mapvina.spatialk.geojson.Point;
 
 /**
  * A listener that can be implemented and added to {@link NavigationViewOptions} to

@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.serialization.json.*
-import com.mapvina.geojson.model.Point
+import com.mapvina.spatialk.geojson.Point
 import com.mapvina.android.annotations.MarkerOptions
 import com.mapvina.android.camera.CameraPosition
 import com.mapvina.android.geometry.LatLng
@@ -27,7 +27,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
-import com.mapvina.geojson.turf.TurfUnit
+import com.mapvina.spatialk.turf.TurfUnit
 import com.mapvina.navigation.android.navigation.ui.v5.route.NavigationMapRoute
 import timber.log.Timber
 import java.io.IOException
@@ -163,7 +163,7 @@ class GraphHopperNavigationActivity :
         }
 
         val origin = Point(userLocation.longitude, userLocation.latitude)
-        if (com.mapvina.geojson.turf.TurfMeasurement.distance(origin, destination, TurfUnit.METRES) < 50) {
+        if (com.mapvina.spatialk.turf.TurfMeasurement.distance(origin, destination, TurfUnit.METRES) < 50) {
             Timber.d("calculateRoute: distance < 50 m")
             binding.startRouteButton.visibility = View.GONE
             return

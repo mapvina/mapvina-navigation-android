@@ -216,11 +216,11 @@ public final class NavigationRoute {
          * This sets the starting point on the map where the route will begin. It is one of the
          * required parameters which must be set for a successful directions response.
          *
-         * @param origin a GeoJson {@link com.mapvina.geojson.Point} object representing the starting location for the route
+         * @param origin a GeoJson {@link com.mapvina.spatialk.geojson.Point} object representing the starting location for the route
          * @return this builder for chaining options together
          * @since 0.5.0
          */
-        public Builder origin(@NonNull com.mapvina.geojson.Point origin) {
+        public Builder origin(@NonNull com.mapbox.geojson.Point origin) {
             origin(origin, null, null);
             return this;
         }
@@ -229,7 +229,7 @@ public final class NavigationRoute {
          * This sets the starting point on the map where the route will begin. It is one of the
          * required parameters which must be set for a successful directions response.
          *
-         * @param origin    a GeoJson {@link com.mapvina.geojson.Point} object representing the starting location for the
+         * @param origin    a GeoJson {@link com.mapbox.geojson.Point} object representing the starting location for the
          *                  route
          * @param angle     double value used for setting the corresponding coordinate's angle of travel
          *                  when determining the route
@@ -238,9 +238,9 @@ public final class NavigationRoute {
          * @return this builder for chaining options together
          * @since 0.5.0
          */
-        public Builder origin(@NonNull com.mapvina.geojson.Point origin, @Nullable Double angle,
+        public Builder origin(@NonNull com.mapbox.geojson.Point origin, @Nullable Double angle,
                               @Nullable Double tolerance) {
-            directionsBuilder.origin(toMapboxPoint(origin));
+            directionsBuilder.origin(origin);
             directionsBuilder.addBearing(angle, tolerance);
             return this;
         }
@@ -249,12 +249,12 @@ public final class NavigationRoute {
          * This sets the ending point on the map where the route will end. It is one of the required
          * parameters which must be set for a successful directions response.
          *
-         * @param destination a GeoJson {@link com.mapvina.geojson.Point} object representing the starting location for the
+         * @param destination a GeoJson {@link com.mapbox.geojson.Point} object representing the starting location for the
          *                    route
          * @return this builder for chaining options together
          * @since 0.50
          */
-        public Builder destination(@NonNull com.mapvina.geojson.Point destination) {
+        public Builder destination(@NonNull com.mapbox.geojson.Point destination) {
             destination(destination, null, null);
             return this;
         }
@@ -263,7 +263,7 @@ public final class NavigationRoute {
          * This sets the ending point on the map where the route will end. It is one of the required
          * parameters which must be set for a successful directions response.
          *
-         * @param destination a GeoJson {@link com.mapvina.geojson.Point} object representing the starting location for the
+         * @param destination a GeoJson {@link com.mapbox.geojson.Point} object representing the starting location for the
          *                    route
          * @param angle       double value used for setting the corresponding coordinate's angle of travel
          *                    when determining the route
@@ -272,9 +272,9 @@ public final class NavigationRoute {
          * @return this builder for chaining options together
          * @since 0.5.0
          */
-        public Builder destination(@NonNull com.mapvina.geojson.Point destination, @Nullable Double angle,
+        public Builder destination(@NonNull com.mapbox.geojson.Point destination, @Nullable Double angle,
                                    @Nullable Double tolerance) {
-            directionsBuilder.destination(toMapboxPoint(destination));
+            directionsBuilder.destination(destination);
             directionsBuilder.addBearing(angle, tolerance);
             return this;
         }
@@ -285,14 +285,14 @@ public final class NavigationRoute {
          * {@link #PROFILE_DRIVING_TRAFFIC} that the max number of waypoints allowed
          * in the request is currently limited to 1.
          *
-         * @param waypoint a {@link com.mapvina.geojson.Point} which represents the pit-stop or waypoint where you'd like
+         * @param waypoint a {@link com.mapbox.geojson.Point} which represents the pit-stop or waypoint where you'd like
          *                 one of the {@link com.mapvina.navigation.core.models.RouteLeg} to
          *                 navigate the user to
          * @return this builder for chaining options together
          * @since 0.5.0
          */
-        public Builder addWaypoint(@NonNull com.mapvina.geojson.Point waypoint) {
-            directionsBuilder.addWaypoint(toMapboxPoint(waypoint));
+        public Builder addWaypoint(@NonNull com.mapbox.geojson.Point waypoint) {
+            directionsBuilder.addWaypoint(waypoint);
             directionsBuilder.addBearing(null, null);
             return this;
         }
@@ -303,7 +303,7 @@ public final class NavigationRoute {
          * {@link #PROFILE_DRIVING_TRAFFIC} that the max number of waypoints allowed
          * in the request is currently limited to 1.
          *
-         * @param waypoint  a {@link com.mapvina.geojson.Point} which represents the pit-stop or waypoint where you'd like
+         * @param waypoint  a {@link com.mapbox.geojson.Point} which represents the pit-stop or waypoint where you'd like
          *                  one of the {@link com.mapvina.navigation.core.models.RouteLeg} to
          *                  navigate the user to
          * @param angle     double value used for setting the corresponding coordinate's angle of travel
@@ -313,9 +313,9 @@ public final class NavigationRoute {
          * @return this builder for chaining options together
          * @since 0.5.0
          */
-        public Builder addWaypoint(@NonNull com.mapvina.geojson.Point waypoint, @Nullable Double angle,
+        public Builder addWaypoint(@NonNull com.mapbox.geojson.Point waypoint, @Nullable Double angle,
                                    @Nullable Double tolerance) {
-            directionsBuilder.addWaypoint(toMapboxPoint(waypoint));
+            directionsBuilder.addWaypoint(waypoint);
             directionsBuilder.addBearing(angle, tolerance);
             return this;
         }
@@ -661,9 +661,7 @@ public final class NavigationRoute {
         return com.mapbox.api.directions.v5.models.DirectionsResponse.fromJson(directionsResponse.toJson());
     }
 
-    private static com.mapbox.geojson.Point toMapboxPoint(com.mapvina.geojson.Point point) {
-        return com.mapbox.geojson.Point.fromLngLat(point.longitude(), point.latitude());
-    }
+
 
     /**
      * Mapbox default username.

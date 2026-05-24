@@ -81,6 +81,8 @@ dependencies {
 
     api(libs.mapvina.annotation)
     implementation(libs.mapvina)
+    implementation("io.github.mapvina:android-sdk-geojson:1.0.0")
+    implementation("io.github.mapvina:android-sdk-turf:1.0.0")
 
     // Mapbox SDKs (needed for requests)
     api(libs.mapbox.geojson)
@@ -108,12 +110,10 @@ dependencies {
     testImplementation(libs.mockk)
 }
 
-// Exclude old version of GeoJSON libs
-// At the moment a newer version - that supports Kotlin Multiplatform - is required to run navigation
+// Exclude old version of GeoJSON libs if any conflicts remain, but keep JVM geojson and turf for navigation compatibility
 configurations {
     configureEach {
-        exclude(group = "io.github.mapvina", module = "android-sdk-geojson")
-        exclude(group = "io.github.mapvina", module = "android-sdk-turf")
+        // Excludes removed since namespaces were safely moved under distinct package names org.mapvina.geojson and com.mapvina.spatialk.geojson
     }
 }
 

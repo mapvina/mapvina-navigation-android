@@ -4,7 +4,7 @@ import android.location.Location as AndroidLocation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.mapvina.navigation.core.models.DirectionsResponse
-import com.mapvina.geojson.Point
+import com.mapvina.spatialk.geojson.Point
 import com.mapvina.android.location.LocationComponent
 import com.mapvina.android.location.LocationComponentActivationOptions
 import com.mapvina.android.location.OnLocationCameraTransitionListener

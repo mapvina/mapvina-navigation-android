@@ -5,9 +5,9 @@ import static org.mockito.Mockito.mock;
 
 import androidx.annotation.NonNull;
 
-import com.mapvina.geojson.Feature;
-import com.mapvina.geojson.LineString;
-import com.mapvina.geojson.Point;
+import com.mapvina.spatialk.geojson.Feature;
+import com.mapvina.spatialk.geojson.LineString;
+import com.mapvina.spatialk.geojson.Point;
 
 import org.junit.Test;
 import com.mapvina.navigation.core.location.Location;

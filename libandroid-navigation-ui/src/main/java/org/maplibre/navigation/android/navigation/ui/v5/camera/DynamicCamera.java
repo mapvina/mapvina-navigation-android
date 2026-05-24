@@ -1,10 +1,10 @@
 package com.mapvina.navigation.android.navigation.ui.v5.camera;
 
 
-import static com.mapvina.geojson.common.CommonExtKt.toJvm;
+import static com.mapvina.navigation.android.navigation.ui.v5.GeoJsonExtKt.toJvm;
 
 import com.mapvina.android.geometry.LatLng;
-import com.mapvina.geojson.Point;
+import com.mapbox.geojson.Point;
 import com.mapvina.navigation.core.location.Location;
 import androidx.annotation.NonNull;
 

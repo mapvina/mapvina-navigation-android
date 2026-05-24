@@ -5,7 +5,7 @@ import android.content.Context;
 import com.mapvina.navigation.android.navigation.ui.v5.BaseTest;
 
 import com.mapvina.navigation.core.models.RouteOptions;
-import com.mapvina.geojson.Point;
+import com.mapvina.spatialk.geojson.Point;
 
 import com.mapvina.navigation.android.navigation.ui.v5.utils.LocaleUtils;
 
@@ -95,7 +95,7 @@ public class NavigationRouteTest extends BaseTest {
     public void addingPointAndBearingKeepsCorrectOrder() throws Exception {
         NavigationRoute navigationRoute = NavigationRoute.builder(context, localeUtils)
             .accessToken(BaseTest.ACCESS_TOKEN)
-            .origin(com.mapvina.geojson.Point.fromLngLat(1.0, 2.0), 90d, 90d)
+            .origin(com.mapvina.spatialk.geojson.Point.fromLngLat(1.0, 2.0), 90d, 90d)
             .addBearing(2.0, 3.0)
             .destination(Point.fromLngLat(1.0, 5.0))
             .build();
@@ -109,8 +109,8 @@ public class NavigationRouteTest extends BaseTest {
     public void reverseOriginDestinationDoesntMessUpBearings() throws Exception {
         NavigationRoute navigationRoute = NavigationRoute.builder(context, localeUtils)
             .accessToken(BaseTest.ACCESS_TOKEN)
-            .destination(com.mapvina.geojson.Point.fromLngLat(1.0, 5.0), 1d, 5d)
-            .origin(com.mapvina.geojson.Point.fromLngLat(1.0, 2.0), 90d, 90d)
+            .destination(com.mapvina.spatialk.geojson.Point.fromLngLat(1.0, 5.0), 1d, 5d)
+            .origin(com.mapvina.spatialk.geojson.Point.fromLngLat(1.0, 2.0), 90d, 90d)
             .build();
 
         assertThat(navigationRoute.getCall().request().url().toString(),

@@ -1,7 +1,7 @@
 package com.mapvina.navigation.android.navigation.ui.v5;
 
 import static junit.framework.Assert.assertNotNull;
-import static com.mapvina.geojson.common.CommonExtKt.toJvm;
+import static com.mapvina.spatialk.geojson.common.CommonExtKt.toJvm;
 import static com.mapvina.navigation.android.navigation.ui.v5.GeoJsonExtKt.toJvmPoints;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -16,7 +16,7 @@ import com.mapvina.navigation.core.models.DirectionsResponse;
 import com.mapvina.navigation.core.models.DirectionsRoute;
 import com.mapvina.navigation.core.models.DirectionsWaypoint;
 import com.mapvina.navigation.core.models.RouteOptions;
-import com.mapvina.geojson.Point;
+import com.mapvina.spatialk.geojson.Point;
 import com.mapvina.navigation.core.routeprogress.RouteProgress;
 
 import org.junit.Test;

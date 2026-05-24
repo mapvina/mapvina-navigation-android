@@ -1,7 +1,7 @@
 package com.mapvina.navigation.android.navigation.ui.v5.route;
 
 import com.mapvina.navigation.core.models.DirectionsRoute;
-import com.mapvina.geojson.LineString;
+import com.mapvina.spatialk.geojson.LineString;
 import com.mapvina.android.geometry.LatLng;
 
 import org.junit.Test;

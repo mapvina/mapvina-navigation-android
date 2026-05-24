@@ -1,6 +1,6 @@
 package com.mapvina.navigation.android.navigation.ui.v5.map;
 
-import static com.mapvina.navigation.android.navigation.ui.v5.GeoJsonExtKt.toJvmPoints;
+import static com.mapvina.navigation.android.navigation.ui.v5.GeoJsonExtKt.toMapVinaPoints;
 
 import com.mapvina.navigation.core.location.Location;
 
@@ -17,6 +17,6 @@ class MapWaynameProgressChangeListener implements ProgressChangeListener {
 
   @Override
   public void onProgressChange(Location location, RouteProgress routeProgress) {
-    mapWayName.updateProgress(location, toJvmPoints(routeProgress.getCurrentStepPoints()));
+    mapWayName.updateProgress(location, toMapVinaPoints(routeProgress.getCurrentStepPoints()));
   }
 }

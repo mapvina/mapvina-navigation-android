@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import com.mapvina.navigation.core.location.Location;
 import com.mapvina.navigation.core.models.DirectionsRoute;
-import com.mapvina.geojson.Point;
+import com.mapvina.spatialk.geojson.Point;
 
 public interface NavigationContract {
 

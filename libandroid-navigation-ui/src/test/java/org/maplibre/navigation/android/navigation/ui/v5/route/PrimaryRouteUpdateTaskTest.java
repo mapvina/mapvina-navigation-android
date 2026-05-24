@@ -7,8 +7,8 @@ import static org.mockito.Mockito.when;
 
 import android.os.Handler;
 
-import com.mapvina.geojson.Feature;
-import com.mapvina.geojson.FeatureCollection;
+import com.mapvina.spatialk.geojson.Feature;
+import com.mapvina.spatialk.geojson.FeatureCollection;
 
 import org.junit.Test;
 import com.mapvina.navigation.android.navigation.ui.v5.route.OnPrimaryRouteUpdatedCallback;

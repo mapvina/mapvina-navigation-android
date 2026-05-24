@@ -15,7 +15,7 @@ import com.mapvina.navigation.android.navigation.ui.v5.listeners.SpeechAnnouncem
 import com.mapvina.navigation.android.navigation.ui.v5.voice.SpeechAnnouncement;
 import com.mapvina.navigation.core.models.BannerInstructions;
 import com.mapvina.navigation.core.models.DirectionsRoute;
-import com.mapvina.geojson.Point;
+import com.mapvina.spatialk.geojson.Point;
 import com.mapvina.navigation.core.milestone.MilestoneEventListener;
 import com.mapvina.navigation.core.navigation.MapVinaNavigation;
 import com.mapvina.navigation.core.routeprogress.ProgressChangeListener;

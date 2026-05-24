@@ -28,9 +28,9 @@ import com.mapvina.android.style.layers.LineLayer
 import com.mapvina.android.style.layers.PropertyFactory.lineColor
 import com.mapvina.android.style.layers.PropertyFactory.lineWidth
 import com.mapvina.android.style.sources.GeoJsonSource
-import com.mapvina.geojson.common.toJvm
-import com.mapvina.geojson.model.LineString
-import com.mapvina.geojson.model.Point
+import com.mapvina.navigation.android.navigation.ui.v5.toJvm
+import com.mapvina.spatialk.geojson.LineString
+import com.mapvina.spatialk.geojson.Point
 import com.mapvina.navigation.core.location.replay.ReplayRouteLocationEngine
 import com.mapvina.navigation.core.location.toAndroidLocation
 import com.mapvina.navigation.core.models.BannerInstructions

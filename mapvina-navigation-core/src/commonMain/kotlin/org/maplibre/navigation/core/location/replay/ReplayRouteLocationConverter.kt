@@ -1,0 +1,148 @@
+package com.mapvina.navigation.core.location.replay
+
+import com.mapvina.spatialk.geojson.LineString
+import com.mapvina.spatialk.geojson.Point
+import com.mapvina.navigation.core.location.Location
+import com.mapvina.navigation.core.models.DirectionsRoute
+import com.mapvina.navigation.core.utils.Constants
+import com.mapvina.spatialk.polyline.PolylineEncoding
+import com.mapvina.spatialk.turf.measurement.bearingTo
+import com.mapvina.spatialk.turf.measurement.length
+import com.mapvina.spatialk.turf.measurement.locateAlong
+import com.mapvina.spatialk.units.Bearing
+import com.mapvina.spatialk.units.DMS.Degrees
+import com.mapvina.spatialk.units.International.Meters
+import com.mapvina.spatialk.units.extensions.meters
+import com.mapvina.navigation.core.utils.MathUtils.wrap
+import com.mapvina.navigation.core.utils.getCurrentSystemTimeSeconds
+
+open class ReplayRouteLocationConverter(
+    private val route: DirectionsRoute,
+    private var speed: Int,
+    private var delay: Int
+) {
+    private var distance = calculateDistancePerSec()
+    private var currentLeg = 0
+    private var currentStep = 0
+    private var time: Long = 0
+
+    val isMultiLegRoute: Boolean
+        get() = route.legs.size > 1
+
+    fun updateSpeed(customSpeedInKmPerHour: Int) {
+        this.speed = customSpeedInKmPerHour
+    }
+
+    fun updateDelay(customDelayInSeconds: Int) {
+        this.delay = customDelayInSeconds
+    }
+
+    fun toLocations(): MutableList<Location> {
+        val stepPoints = calculateStepPoints()
+        val mockedLocations = calculateMockLocations(stepPoints)
+
+        return mockedLocations
+    }
+
+    fun initializeTime() {
+        time = getCurrentSystemTimeSeconds() * ONE_SECOND_IN_MILLISECONDS
+    }
+
+    /**
+     * Interpolates the route into even points along the route and adds these to the points list.
+     *
+     * @param lineString our route geometry.
+     * @return list of sliced [Point]s.
+     */
+    fun sliceRoute(lineString: LineString): List<Point> {
+        if (lineString.coordinates.isEmpty()) {
+            return emptyList()
+        }
+
+        val distanceMeters = lineString.length().toDouble(Meters)
+        if (distanceMeters <= 0) {
+            return emptyList()
+        }
+
+        val points: MutableList<Point> = ArrayList()
+        var i = 0.0
+        while (i < distanceMeters) {
+            val point = lineString.locateAlong(i.meters)
+            points.add(point)
+            i += distance
+        }
+        return points
+    }
+
+    fun calculateMockLocations(points: List<Point>): MutableList<Location> {
+        val mockedLocations: MutableList<Location> = ArrayList()
+        for (i in points.indices) {
+            val mockedLocation = createMockLocationFrom(points[i])
+
+            mockedLocations.add(
+                if (i - 1 >= 0) {
+                    val bearing = (points[i - 1].bearingTo(points[i]) - Bearing.North).toDouble(Degrees)
+                    mockedLocation.copy(bearing = wrap(bearing, 0.0, 360.0).toFloat())
+                } else if (points.size > 1) {
+                    val bearing = (points[0].bearingTo(points[1]) - Bearing.North).toDouble(Degrees)
+                    mockedLocation.copy(bearing = wrap(bearing, 0.0, 360.0).toFloat())
+                } else {
+                    mockedLocation.copy(bearing = 0f)
+                }
+            )
+
+            time += (delay * ONE_SECOND_IN_MILLISECONDS).toLong()
+        }
+
+        return mockedLocations
+    }
+
+    /**
+     * Converts the speed value to m/s and delay to seconds. Then the distance is calculated and returned.
+     *
+     * @return a double value representing the distance given a speed and time.
+     */
+    private fun calculateDistancePerSec(): Double {
+        val distance = (speed * ONE_KM_IN_METERS * delay) / ONE_HOUR_IN_SECONDS
+        return distance
+    }
+
+    private fun calculateStepPoints(): List<Point> {
+        val line = LineString(PolylineEncoding.decode(
+            route.legs[currentLeg].steps[currentStep].geometry,
+            Constants.PRECISION_6
+        ))
+
+        increaseIndex()
+
+        return sliceRoute(line)
+    }
+
+    private fun increaseIndex() {
+        if (currentStep < route.legs[currentLeg].steps.size - 1) {
+            currentStep++
+        } else if (currentLeg < route.legs.size - 1) {
+            currentLeg++
+            currentStep = 0
+        }
+    }
+
+    private fun createMockLocationFrom(point: Point): Location {
+        return Location(
+            provider = PROVIDER_NAME,
+            latitude = point.latitude,
+            longitude = point.longitude,
+            altitude = point.altitude,
+            speedMetersPerSeconds = ((speed * ONE_KM_IN_METERS) / ONE_HOUR_IN_SECONDS).toFloat(),
+            accuracyMeters = 3f,
+            timeMilliseconds = time
+        )
+    }
+
+    companion object {
+        private const val ONE_SECOND_IN_MILLISECONDS = 1000
+        private const val ONE_KM_IN_METERS = 1000.0
+        private const val ONE_HOUR_IN_SECONDS = 3600
+        const val PROVIDER_NAME = "ReplayRouteLocation"
+    }
+}

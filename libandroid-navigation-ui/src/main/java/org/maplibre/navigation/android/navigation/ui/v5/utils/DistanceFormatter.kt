@@ -9,8 +9,9 @@ import android.text.style.StyleSpan
 import com.mapvina.navigation.android.navigation.ui.v5.R
 import com.mapvina.navigation.core.models.UnitType
 import com.mapvina.navigation.core.navigation.MapVinaNavigationOptions
-import com.mapvina.turf.TurfConstants
-import com.mapvina.turf.TurfConversion
+import com.mapvina.spatialk.units.extensions.meters
+import com.mapvina.spatialk.units.International
+import com.mapvina.spatialk.units.Imperial
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -30,10 +31,10 @@ class DistanceFormatter(
     private val roundingIncrement: MapVinaNavigationOptions.RoundingIncrement
 ) {
     private val unitStrings: Map<String, String> = mapOf(
-        TurfConstants.UNIT_KILOMETERS to context.getString(R.string.kilometers),
-        TurfConstants.UNIT_METERS to context.getString(R.string.meters),
-        TurfConstants.UNIT_MILES to context.getString(R.string.miles),
-        TurfConstants.UNIT_FEET to context.getString(R.string.feet),
+        UNIT_KILOMETERS to context.getString(R.string.kilometers),
+        UNIT_METERS to context.getString(R.string.meters),
+        UNIT_MILES to context.getString(R.string.miles),
+        UNIT_FEET to context.getString(R.string.feet),
     )
     private val numberFormat: NumberFormat
     private val localeUtils: LocaleUtils = LocaleUtils()
@@ -41,9 +42,9 @@ class DistanceFormatter(
     private val unitType: UnitType
 
     private val largeUnit: String
-        get() = if (UnitType.IMPERIAL == unitType) TurfConstants.UNIT_MILES else TurfConstants.UNIT_KILOMETERS
+        get() = if (UnitType.IMPERIAL == unitType) UNIT_MILES else UNIT_KILOMETERS
     private val smallUnit: String
-        get() = if (UnitType.IMPERIAL == unitType) TurfConstants.UNIT_FEET else TurfConstants.UNIT_METERS
+        get() = if (UnitType.IMPERIAL == unitType) UNIT_FEET else UNIT_METERS
 
     init {
         val locale = language?.let { l -> Locale(l) } ?: localeUtils.inferDeviceLocale(context)
@@ -68,10 +69,15 @@ class DistanceFormatter(
      * relative size of .65 times the size of the number
      */
     fun formatDistance(distance: Double): SpannableString {
-        val distanceSmallUnit =
-            TurfConversion.convertLength(distance, TurfConstants.UNIT_METERS, smallUnit)
-        val distanceLargeUnit =
-            TurfConversion.convertLength(distance, TurfConstants.UNIT_METERS, largeUnit)
+        val length = distance.meters
+        val distanceSmallUnit = when (smallUnit) {
+            UNIT_FEET -> length.toDouble(Imperial.Feet)
+            else -> length.toDouble(International.Meters)
+        }
+        val distanceLargeUnit = when (largeUnit) {
+            UNIT_MILES -> length.toDouble(Imperial.Miles)
+            else -> length.toDouble(International.Kilometers)
+        }
 
         return when {
             distanceLargeUnit > LARGE_UNIT_THRESHOLD ->
@@ -158,5 +164,10 @@ class DistanceFormatter(
     companion object {
         private const val LARGE_UNIT_THRESHOLD = 10
         private const val SMALL_UNIT_THRESHOLD = 401
+
+        const val UNIT_METERS = "meters"
+        const val UNIT_KILOMETERS = "kilometers"
+        const val UNIT_MILES = "miles"
+        const val UNIT_FEET = "feet"
     }
 }

@@ -1,6 +1,6 @@
 package com.mapvina.navigation.android.navigation.ui.v5.map;
 
-import com.mapvina.geojson.Point;
+import com.mapvina.spatialk.geojson.Point;
 import com.mapvina.android.plugins.annotation.Symbol;
 import com.mapvina.android.plugins.annotation.SymbolManager;
 import com.mapvina.android.plugins.annotation.SymbolOptions;

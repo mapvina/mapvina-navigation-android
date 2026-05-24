@@ -49,8 +49,8 @@ import static com.mapvina.android.style.layers.Property.VISIBLE;
 import static com.mapvina.android.style.layers.PropertyFactory.iconAllowOverlap;
 import static com.mapvina.android.style.layers.PropertyFactory.iconIgnorePlacement;
 import static com.mapvina.android.style.layers.PropertyFactory.visibility;
-import static com.mapvina.geojson.common.CommonExtKt.toJvm;
-import static com.mapvina.navigation.android.navigation.ui.v5.GeoJsonExtKt.toJvmPoints;
+import static com.mapvina.navigation.android.navigation.ui.v5.GeoJsonExtKt.toJvm;
+import static com.mapvina.navigation.android.navigation.ui.v5.GeoJsonExtKt.toMapVinaPoints;
 
 class MapRouteArrow {
 
@@ -112,11 +112,11 @@ class MapRouteArrow {
   }
 
   private List<Point> obtainArrowPointsFrom(RouteProgress routeProgress) {
-    List<Point> reversedCurrent = new ArrayList<>(toJvmPoints(routeProgress.getCurrentStepPoints()));
+    List<Point> reversedCurrent = new ArrayList<>(toMapVinaPoints(routeProgress.getCurrentStepPoints()));
     Collections.reverse(reversedCurrent);
 
     LineString arrowLineCurrent = LineString.fromLngLats(reversedCurrent);
-    LineString arrowLineUpcoming = LineString.fromLngLats(toJvmPoints(routeProgress.getUpcomingStepPoints()));
+    LineString arrowLineUpcoming = LineString.fromLngLats(toMapVinaPoints(routeProgress.getUpcomingStepPoints()));
 
     LineString arrowCurrentSliced = TurfMisc.lineSliceAlong(arrowLineCurrent, 0, RouteConstants.THIRTY, TurfConstants.UNIT_METERS);
     LineString arrowUpcomingSliced = TurfMisc.lineSliceAlong(arrowLineUpcoming, 0, RouteConstants.THIRTY, TurfConstants.UNIT_METERS);

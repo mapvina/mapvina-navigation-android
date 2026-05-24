@@ -4,7 +4,7 @@ ext {
     mapVinaDeveloperMail = 'team@mapvina.com'
     mapVinaDeveloperOrganization = 'MapVina'
 
-    navigationArtifactGroupId = 'com.mapvina.navigation'
+    navigationArtifactGroupId = 'io.github.mapvina.navigation'
     navigationArtifactTitle = 'MapVina Navigation SDK'
     navigationArtifactDescription = 'MapVina Navigation build on Kotlin Multiplatform'
     navigationDeveloperOrganizationUrl = 'http://www.mapvina.com'

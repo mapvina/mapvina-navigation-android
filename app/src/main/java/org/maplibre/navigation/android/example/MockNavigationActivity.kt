@@ -43,7 +43,7 @@ import com.mapvina.navigation.core.models.UnitType
 import com.mapvina.navigation.core.navigation.AndroidMapVinaNavigation
 import com.mapvina.navigation.core.navigation.MapVinaNavigation
 import com.mapvina.navigation.core.navigation.NavigationEventListener
-import com.mapvina.geojson.Point
+import com.mapvina.spatialk.geojson.Point
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -3,7 +3,7 @@ package com.mapvina.navigation.android.navigation.ui.v5.map;
 import androidx.annotation.NonNull;
 import androidx.annotation.UiThread;
 
-import com.mapvina.geojson.Point;
+import com.mapbox.geojson.Point;
 import com.mapvina.android.geometry.LatLng;
 import com.mapvina.android.plugins.annotation.Symbol;
 import com.mapvina.android.plugins.annotation.SymbolManager;

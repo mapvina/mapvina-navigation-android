@@ -37,3 +37,17 @@ nexusPublishing {
 task<Delete>("clean") {
     delete(rootProject.buildDir)
 }
+
+allprojects {
+    plugins.withId("signing") {
+        val privateKeyFile = file("/Volumes/DATA/MapVina/private-key.asc")
+        if (privateKeyFile.exists()) {
+            val privateKey = privateKeyFile.readText()
+            val password = project.findProperty("signing.password") as String? ?: System.getenv("SIGNING_PASSWORD")
+            val keyId = project.findProperty("signing.keyId") as String? ?: "8B10EF76"
+            extensions.configure<SigningExtension> {
+                useInMemoryPgpKeys(keyId, privateKey, password)
+            }
+        }
+    }
+}

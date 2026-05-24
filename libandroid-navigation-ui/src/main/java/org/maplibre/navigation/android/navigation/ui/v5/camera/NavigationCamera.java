@@ -4,7 +4,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 
-import com.mapvina.geojson.Point;
+import com.mapbox.geojson.Point;
 import com.mapvina.navigation.core.location.Location;
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;

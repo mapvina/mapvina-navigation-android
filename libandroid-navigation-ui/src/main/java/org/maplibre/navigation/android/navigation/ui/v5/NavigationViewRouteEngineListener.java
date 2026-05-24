@@ -1,7 +1,7 @@
 package com.mapvina.navigation.android.navigation.ui.v5;
 
 import com.mapvina.navigation.core.models.DirectionsRoute;
-import com.mapvina.geojson.Point;
+import com.mapvina.spatialk.geojson.Point;
 
 
 class NavigationViewRouteEngineListener implements ViewRouteListener {

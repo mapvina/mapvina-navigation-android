@@ -10,8 +10,8 @@ import androidx.annotation.NonNull;
 import com.mapvina.navigation.core.models.DirectionsRoute;
 import com.mapvina.navigation.core.models.LegStep;
 import com.mapvina.navigation.core.models.StepIntersection;
-import com.mapvina.geojson.Point;
-import com.mapvina.geojson.utils.PolylineUtils;
+import com.mapvina.spatialk.geojson.Point;
+import com.mapvina.spatialk.geojson.utils.PolylineUtils;
 import com.mapvina.navigation.core.routeprogress.RouteProgress;
 
 import java.util.List;
