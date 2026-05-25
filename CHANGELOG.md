@@ -13,13 +13,13 @@ MapVina welcomes participation and contributions from everyone.
 
 ### v5.0.0-pre11 - Aug 30, 2025
 
-- Update to latest dependencies [#182](https://github.com/mapvina/mapvina-navigation-android/pull/182)
-- Enable dependabot [#182](https://github.com/mapvina/mapvina-navigation-android/pull/182)
+- Update to latest dependencies [#182](https://github.io/github/mapvina/mapvina-navigation-android/pull/182)
+- Enable dependabot [#182](https://github.io/github/mapvina/mapvina-navigation-android/pull/182)
 
 ### v5.0.0-pre10 - Aug 22, 2025
 
-- Use highest location provider on iOS [#178](https://github.com/mapvina/mapvina-navigation-android/pull/178)
-- Improve AppleLocationEngine time-out behavior [#176](https://github.com/mapvina/mapvina-navigation-android/pull/176)
+- Use highest location provider on iOS [#178](https://github.io/github/mapvina/mapvina-navigation-android/pull/178)
+- Improve AppleLocationEngine time-out behavior [#176](https://github.io/github/mapvina/mapvina-navigation-android/pull/176)
 
 ### v5.0.0-pre9 - Jul 11, 2025
 
@@ -27,16 +27,16 @@ MapVina welcomes participation and contributions from everyone.
 
 ### v5.0.0-pre8 - Jun 27, 2025
 
-- Fix ignoring empty legs when increasing navigation indices [#167](https://github.com/mapvina/mapvina-navigation-android/pull/167)
+- Fix ignoring empty legs when increasing navigation indices [#167](https://github.io/github/mapvina/mapvina-navigation-android/pull/167)
 
 ### v5.0.0-pre7 - Jun 18, 2025
 
-- Fix AppleLocationEngine by enabling background location updates [#166](https://github.com/mapvina/mapvina-navigation-android/pull/166)
+- Fix AppleLocationEngine by enabling background location updates [#166](https://github.io/github/mapvina/mapvina-navigation-android/pull/166)
 
 ### v5.0.0-pre6 - Jun 13, 2025
 
-- Fix crash on MapFpsDelegate, caused by null modifier [#141](https://github.com/mapvina/mapvina-navigation-android/issues/141)
-- Add explicit setting of leg/step index to MapVinaNavigation [#164](https://github.com/mapvina/mapvina-navigation-android/pull/164)
+- Fix crash on MapFpsDelegate, caused by null modifier [#141](https://github.io/github/mapvina/mapvina-navigation-android/issues/141)
+- Add explicit setting of leg/step index to MapVinaNavigation [#164](https://github.io/github/mapvina/mapvina-navigation-android/pull/164)
 
 Added sample code on how to use the GraphHopper routing server directly in GraphHopperNavigationActivity. Please make sure to add this line to the app/main/res/values/developer-config.xml:
 
@@ -46,39 +46,39 @@ Added sample code on how to use the GraphHopper routing server directly in Graph
 
 ### v5.0.0-pre5 - May 16, 2025
 
-- Fix threading and platform characteristics for Apple location engine [#159](https://github.com/mapvina/mapvina-navigation-android/pull/159)
+- Fix threading and platform characteristics for Apple location engine [#159](https://github.io/github/mapvina/mapvina-navigation-android/pull/159)
 
 ### v5.0.0-pre4 - April 24, 2025
 
-- Fix wrong configured UI module publishing [#155](https://github.com/mapvina/mapvina-navigation-android/pull/155)
+- Fix wrong configured UI module publishing [#155](https://github.io/github/mapvina/mapvina-navigation-android/pull/155)
 
 ### v5.0.0-pre3 - April 9, 2025
 
-- Fix not working AppleLocationEngine [#149](https://github.com/mapvina/mapvina-navigation-android/pull/149)
+- Fix not working AppleLocationEngine [#149](https://github.io/github/mapvina/mapvina-navigation-android/pull/149)
 
 ### v5.0.0-pre2 - March 9, 2025
 
-- Fix crash by missing last location [#148](https://github.com/mapvina/mapvina-navigation-android/pull/148)
+- Fix crash by missing last location [#148](https://github.io/github/mapvina/mapvina-navigation-android/pull/148)
 
 ### v5.0.0-pre1 - March 3, 2025
 
-- Migrate to version catalog [#147](https://github.com/mapvina/mapvina-navigation-android/pull/147)
-- Migrate Gradle build files to Kotlin [#147](https://github.com/mapvina/mapvina-navigation-android/pull/147)
-- Upgrade to latest MapVina version `11.8.1` [#144](https://github.com/mapvina/mapvina-navigation-android/pull/144)
-- Reduce production logs [#143](https://github.com/mapvina/mapvina-navigation-android/pull/143)
+- Migrate to version catalog [#147](https://github.io/github/mapvina/mapvina-navigation-android/pull/147)
+- Migrate Gradle build files to Kotlin [#147](https://github.io/github/mapvina/mapvina-navigation-android/pull/147)
+- Upgrade to latest MapVina version `11.8.1` [#144](https://github.io/github/mapvina/mapvina-navigation-android/pull/144)
+- Reduce production logs [#143](https://github.io/github/mapvina/mapvina-navigation-android/pull/143)
 
 ### v5.0.0-pre0 - January 29, 2025
 
 **BREAKING CHANGES:**
-- The library modules are now available on [Maven Central](https://mvnrepository.com/search?q=com.mapvina.navigation).
-- Convert module `libandroid-navigation` to Kotlin Multiplatform. See description of [#133](https://github.com/mapvina/mapvina-navigation-android/issues/133) to get informed about all breaking changes 
-- Convert module `libandroid-navigation` to Kotlin. See description of PR [#127](https://github.com/mapvina/mapvina-navigation-android/pull/127) to get informed about all breaking changes
-- Updated startNavigation() in NavigationLauncher to just use a context instead of an activity [#126](https://github.com/mapvina/mapvina-navigation-android/pull/126)
+- The library modules are now available on [Maven Central](https://mvnrepository.com/search?q=io.github.mapvina.navigation).
+- Convert module `libandroid-navigation` to Kotlin Multiplatform. See description of [#133](https://github.io/github/mapvina/mapvina-navigation-android/issues/133) to get informed about all breaking changes 
+- Convert module `libandroid-navigation` to Kotlin. See description of PR [#127](https://github.io/github/mapvina/mapvina-navigation-android/pull/127) to get informed about all breaking changes
+- Updated startNavigation() in NavigationLauncher to just use a context instead of an activity [#126](https://github.io/github/mapvina/mapvina-navigation-android/pull/126)
 
 ### v4.0.0 - November 9, 2024
 
 **BREAKING CHANGES:**
-- Update naming and packages to MapVina (`com.mapvina.navigation.android`)
+- Update naming and packages to MapVina (`io.github.mapvina.navigation.android`)
 - Update MapVina native to v11
 
 ### v3.0.1 - November 7, 2024
@@ -95,7 +95,7 @@ Added sample code on how to use the GraphHopper routing server directly in Graph
   ```xml
     <string name="valhalla_url" translatable="false">https://valhalla1.openstreetmap.de/route</string>
   ```
-- Fix crash on ManeuverView, caused by `contains` not being able to handle null values [#122](https://github.com/mapvina/mapvina-navigation-android/issues/122)
+- Fix crash on ManeuverView, caused by `contains` not being able to handle null values [#122](https://github.io/github/mapvina/mapvina-navigation-android/issues/122)
 
 ### v3.0.0 - November 5, 2023
 
@@ -107,10 +107,10 @@ Added sample code on how to use the GraphHopper routing server directly in Graph
   - `NavigationRoute` has been moved to the ui module.
   - `RouteProcessorBackgroundThread.Listener#onCheckFasterRoute` was removed as this relied on parts of the RouteFetcher that don't work anymore in the core. If you need this feature, you implement this in the UI code. 
     - This resulted in some smaller API changes that don't require the RouteFetcher as parameter anymore.
-- Support multiple legs by snap to route engine [#77](https://github.com/mapvina/mapvina-navigation-android/pull/77)
-- Mark unused option `maximumDistanceOffRoute` as deprecated [#65](https://github.com/mapvina/mapvina-navigation-android/pull/65)
-- Fix move-away-from-maneuver logic of `OffRouteDetector` [#65](https://github.com/mapvina/mapvina-navigation-android/pull/65)
-- Sample app: Moved all configurations to a central place [#57](https://github.com/mapvina/mapvina-navigation-android/pull/57)
+- Support multiple legs by snap to route engine [#77](https://github.io/github/mapvina/mapvina-navigation-android/pull/77)
+- Mark unused option `maximumDistanceOffRoute` as deprecated [#65](https://github.io/github/mapvina/mapvina-navigation-android/pull/65)
+- Fix move-away-from-maneuver logic of `OffRouteDetector` [#65](https://github.io/github/mapvina/mapvina-navigation-android/pull/65)
+- Sample app: Moved all configurations to a central place [#57](https://github.io/github/mapvina/mapvina-navigation-android/pull/57)
   > **Note**  
   > Please delete your existing `app/main/res/values/developer-config.xml` to generate the new one or copy following content to your existing file:
   ```xml
@@ -127,8 +127,8 @@ Added sample code on how to use the GraphHopper routing server directly in Graph
   </resources>
   ```
 - Fix memory leak in Navigation Service
-- Only progress the user along the step / route if the user is close to the route (currently 1km), [#75](https://github.com/mapvina/mapvina-navigation-android/pull/75)
-- Compatibility fixes for API 34 [#90](https://github.com/mapvina/mapvina-navigation-android/pull/90)
+- Only progress the user along the step / route if the user is close to the route (currently 1km), [#75](https://github.io/github/mapvina/mapvina-navigation-android/pull/75)
+- Compatibility fixes for API 34 [#90](https://github.io/github/mapvina/mapvina-navigation-android/pull/90)
 - When setting a new route or advancing to the next leg, we reset the `currentLegAnnotation` in `NavigationRouteProcessor`, fixes legs don't reset on rerouting.
 - Make sure step distance remaining is set correctly before first routeProgress is calculated, only calculate maneuverCompletion when routeProgress is set. This fixes annotation Index set to wrong values
 
@@ -142,7 +142,7 @@ Added sample code on how to use the GraphHopper routing server directly in Graph
 - Incremented minSdk version from 15 to 21 to work same as mapvina implementation.
 - Created custom classes for `GoogleLocationEngineImpl`, `Utils`, `LocationEngineProvider` which were removed from default implementation mapvina to provide working with GSM location.
 - Corrected resource calls due to renamed res files in mapvina (from `mapbox_` to `mapvina_`).
-- All changes are included in this pull request [49](https://github.com/mapvina/mapvina-navigation-android/pull/49)
+- All changes are included in this pull request [49](https://github.io/github/mapvina/mapvina-navigation-android/pull/49)
 - Updated dependencies of used libs and build tools
 - Removed AccessToken usage
 - Fixed Jitpack Build
@@ -150,7 +150,7 @@ Added sample code on how to use the GraphHopper routing server directly in Graph
 
 ### v1.2.0 - November 21, 2022
 
-(Please use a recent commit from Jitpack see [#40](https://github.com/mapvina/mapvina-navigation-android/issues/40), as the Release Build failed at Jitpack)
+(Please use a recent commit from Jitpack see [#40](https://github.io/github/mapvina/mapvina-navigation-android/issues/40), as the Release Build failed at Jitpack)
 
 - Fixed unit tests and updated some build dependencies. 
 - Added Flags for pending intents which are required in Android 31+
@@ -159,7 +159,7 @@ Added sample code on how to use the GraphHopper routing server directly in Graph
 ### v1.1.1 and prior version - October 21, 2022
 
 - We completely removed the UI part from the SDK so it will only contain the logics for navigation and not the visuals.
-- We upgraded the [Mapbox Map SDK](https://github.com/mapbox/mapbox-gl-native/tree/master/platform/android) to [mapvina SDK](https://github.com/mapvina/mapvina-gl-native/tree/master/platform/android) version 9.4.0.
+- We upgraded the [Mapbox Map SDK](https://github.com/mapbox/mapbox-gl-native/tree/master/platform/android) to [mapvina SDK](https://github.io/github/mapvina/mapvina-gl-native/tree/master/platform/android) version 9.4.0.
 - We upgraded the [NavigationRoute](https://github.com/flitsmeister/flitsmeister-navigation-android/blob/master/libandroid-navigation/src/main/java/com/mapbox/services/android/navigation/v5/navigation/NavigationRoute.java#L425)
   with the possibility to add an intercepter to the request.
 - We changed the [locationLayerPlugin](https://github.com/mapbox/mapbox-plugins-android) to the [location component](https://docs.mapbox.com/android/api/map-sdk/8.5.0/com/mapbox/mapboxsdk/location/LocationComponent.html)

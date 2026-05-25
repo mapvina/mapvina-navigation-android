@@ -1,0 +1,339 @@
+package io.github.mapvina.navigation.android.example
+
+import android.annotation.SuppressLint
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.os.Build
+import android.os.Bundle
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
+import io.github.mapvina.navigation.core.models.DirectionsResponse
+import io.github.mapvina.android.annotations.MarkerOptions
+import io.github.mapvina.android.camera.CameraUpdateFactory
+import io.github.mapvina.android.geometry.LatLng
+import io.github.mapvina.android.location.LocationComponent
+import io.github.mapvina.android.location.LocationComponentActivationOptions
+import io.github.mapvina.android.location.modes.CameraMode
+import io.github.mapvina.android.location.modes.RenderMode
+import io.github.mapvina.android.maps.MapVinaMap
+import io.github.mapvina.android.maps.OnMapReadyCallback
+import io.github.mapvina.android.maps.Style
+import io.github.mapvina.navigation.android.navigation.ui.v5.route.NavigationRoute
+import io.github.mapvina.navigation.core.location.replay.ReplayRouteLocationEngine
+import io.github.mapvina.navigation.core.models.DirectionsRoute
+import io.github.mapvina.navigation.core.offroute.OffRouteListener
+import io.github.mapvina.navigation.core.routeprogress.ProgressChangeListener
+import io.github.mapvina.navigation.core.routeprogress.RouteProgress
+import io.github.mapvina.turf.TurfConstants
+import io.github.mapvina.turf.TurfMeasurement
+import okhttp3.Request
+import io.github.mapvina.navigation.android.example.databinding.ActivityMockNavigationBinding
+import io.github.mapvina.navigation.android.navigation.ui.v5.route.NavigationMapRoute
+import io.github.mapvina.navigation.core.instruction.Instruction
+import io.github.mapvina.navigation.core.location.Location
+import io.github.mapvina.navigation.core.milestone.Milestone
+import io.github.mapvina.navigation.core.milestone.MilestoneEventListener
+import io.github.mapvina.navigation.core.milestone.RouteMilestone
+import io.github.mapvina.navigation.core.milestone.Trigger
+import io.github.mapvina.navigation.core.milestone.TriggerProperty
+import io.github.mapvina.navigation.core.models.UnitType
+import io.github.mapvina.navigation.core.navigation.AndroidMapVinaNavigation
+import io.github.mapvina.navigation.core.navigation.MapVinaNavigation
+import io.github.mapvina.navigation.core.navigation.NavigationEventListener
+import io.github.mapvina.spatialk.geojson.Point
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import timber.log.Timber
+import java.lang.ref.WeakReference
+
+class MockNavigationActivity :
+    AppCompatActivity(),
+    OnMapReadyCallback,
+    MapVinaMap.OnMapClickListener,
+    ProgressChangeListener,
+    NavigationEventListener,
+    MilestoneEventListener,
+    OffRouteListener {
+    private val BEGIN_ROUTE_MILESTONE = 1001
+    private lateinit var mapVinaMap: MapVinaMap
+
+    // Navigation related variables
+    private var locationEngine: ReplayRouteLocationEngine =
+        ReplayRouteLocationEngine()
+    private lateinit var navigation: MapVinaNavigation
+    private var route: DirectionsRoute? = null
+    private var navigationMapRoute: NavigationMapRoute? = null
+    private var destination: Point? = null
+    private var waypoint: Point? = null
+    private var locationComponent: LocationComponent? = null
+
+    private lateinit var binding: ActivityMockNavigationBinding
+
+    @SuppressLint("MissingPermission")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMockNavigationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.mapView.apply {
+            onCreate(savedInstanceState)
+            getMapAsync(this@MockNavigationActivity)
+        }
+
+        navigation = AndroidMapVinaNavigation(applicationContext)
+        navigation.addMilestone(
+            RouteMilestone(
+                identifier = BEGIN_ROUTE_MILESTONE,
+                instruction = BeginRouteInstruction(),
+                trigger = Trigger.all(
+                    Trigger.lt(
+                        TriggerProperty.STEP_INDEX, 3
+                    ),
+                    Trigger.gt(
+                        TriggerProperty.STEP_DISTANCE_TOTAL_METERS, 200
+                    ),
+                    Trigger.gte(
+                        TriggerProperty.STEP_DISTANCE_TRAVELED_METERS, 75
+                    ),
+                ),
+            )
+        )
+
+        binding.startRouteButton.setOnClickListener {
+            route?.let { route ->
+                binding.startRouteButton.visibility = View.INVISIBLE
+
+                // Attach all of our navigation listeners.
+                navigation.apply {
+                    addNavigationEventListener(this@MockNavigationActivity)
+                    addProgressChangeListener(this@MockNavigationActivity)
+                    addMilestoneEventListener(this@MockNavigationActivity)
+                    addOffRouteListener(this@MockNavigationActivity)
+                }
+
+                locationEngine.also {
+                    it.assign(route)
+                    navigation.locationEngine = it
+                    navigation.startNavigation(route)
+                    if (::mapVinaMap.isInitialized) {
+                        mapVinaMap.removeOnMapClickListener(this)
+                    }
+                }
+            }
+        }
+
+        binding.newLocationFab.setOnClickListener {
+            newOrigin()
+        }
+
+        binding.clearPoints.setOnClickListener {
+            if (::mapVinaMap.isInitialized) {
+                mapVinaMap.markers.forEach {
+                    mapVinaMap.removeMarker(it)
+                }
+            }
+            destination = null
+            waypoint = null
+            it.visibility = View.GONE
+
+            navigationMapRoute?.removeRoute()
+        }
+    }
+
+    override fun onMapReady(mapVinaMap: MapVinaMap) {
+        this.mapVinaMap = mapVinaMap
+        mapVinaMap.setStyle(
+            Style.Builder().fromUri(getString(R.string.map_style_light))
+        ) { style ->
+            enableLocationComponent(style)
+            navigationMapRoute = NavigationMapRoute(navigation, binding.mapView, mapVinaMap)
+
+            mapVinaMap.addOnMapClickListener(this)
+            Snackbar.make(
+                findViewById(R.id.container),
+                "Tap map to place waypoint",
+                Snackbar.LENGTH_LONG,
+            ).show()
+
+            newOrigin()
+        }
+    }
+
+    @SuppressWarnings("MissingPermission")
+    private fun enableLocationComponent(style: Style) {
+        // Get an instance of the component
+        locationComponent = mapVinaMap.locationComponent
+
+        locationComponent?.let {
+            // Activate with a built LocationComponentActivationOptions object
+            it.activateLocationComponent(
+                LocationComponentActivationOptions.builder(this, style).build(),
+            )
+
+            // Enable to make component visible
+            it.isLocationComponentEnabled = true
+
+            // Set the component's camera mode
+            it.cameraMode = CameraMode.TRACKING
+
+            // Set the component's render mode
+            it.renderMode = RenderMode.GPS
+
+//            it.locationEngine = locationEngine
+        }
+    }
+
+    override fun onMapClick(point: LatLng): Boolean {
+        var addMarker = true
+        when {
+            destination == null -> destination = Point.fromLngLat(point.longitude, point.latitude, point.altitude)
+            waypoint == null -> waypoint = Point.fromLngLat(point.longitude, point.latitude, point.altitude)
+            else -> {
+                Toast.makeText(this, "Only 2 waypoints supported", Toast.LENGTH_LONG).show()
+                addMarker = false
+            }
+        }
+
+        if (addMarker) {
+            mapVinaMap.addMarker(MarkerOptions().position(point))
+        }
+        binding.clearPoints.visibility = View.VISIBLE
+
+        binding.startRouteButton.visibility = View.VISIBLE
+        calculateRoute()
+        return true
+    }
+
+    private fun calculateRoute() {
+        val userLocation = locationEngine.lastLocation
+        val destination = destination
+        if (userLocation == null) {
+            Timber.d("calculateRoute: User location is null, therefore, origin can't be set.")
+            return
+        }
+
+        if (destination == null) {
+            return
+        }
+
+        val origin = Point.fromLngLat(userLocation.longitude, userLocation.latitude, userLocation.altitude ?: 0.0)
+        if (TurfMeasurement.distance(origin, destination, TurfConstants.UNIT_METERS) < 50) {
+            binding.startRouteButton.visibility = View.GONE
+            return
+        }
+
+        val navigationRouteBuilder = NavigationRoute.builder(this).apply {
+            this.accessToken(getString(R.string.mapbox_access_token))
+            this.origin(origin)
+            this.destination(destination)
+            this.voiceUnits(UnitType.METRIC)
+            this.alternatives(true)
+            this.baseUrl(getString(R.string.base_url))
+        }
+
+        navigationRouteBuilder.build().getRoute(object : Callback<DirectionsResponse> {
+            override fun onResponse(
+                call: Call<DirectionsResponse>,
+                response: Response<DirectionsResponse>,
+            ) {
+                Timber.d("Url: %s", (call.request() as Request).url.toString())
+                response.body()?.let { response ->
+                    if (response.routes.isNotEmpty()) {
+                        val mapvinaResponse = DirectionsResponse.fromJson(response.toJson());
+                        val directionsRoute = mapvinaResponse.routes.first()
+                        this@MockNavigationActivity.route = directionsRoute
+                        navigationMapRoute?.addRoutes(mapvinaResponse.routes)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<DirectionsResponse>, throwable: Throwable) {
+                Timber.e(throwable, "onFailure: navigation.getRoute()")
+            }
+        })
+    }
+
+    override fun onProgressChange(location: Location, routeProgress: RouteProgress) {
+    }
+
+    override fun onRunning(running: Boolean) {
+    }
+
+    override fun onMilestoneEvent(
+        routeProgress: RouteProgress,
+        instruction: String?,
+        milestone: Milestone,
+    ) {
+    }
+
+    override fun userOffRoute(location: Location) {
+    }
+
+    private class BeginRouteInstruction : Instruction {
+
+        override fun buildInstruction(routeProgress: RouteProgress): String {
+            return "Have a safe trip!"
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.mapView.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.mapView.onPause()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        binding.mapView.onStart()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        binding.mapView.onStop()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        binding.mapView.onLowMemory()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        navigation.onDestroy()
+        if (::mapVinaMap.isInitialized) {
+            mapVinaMap.removeOnMapClickListener(this)
+        }
+        binding.mapView.onDestroy()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        binding.mapView.onSaveInstanceState(outState)
+    }
+
+    private class MyBroadcastReceiver internal constructor(navigation: MapVinaNavigation) :
+        BroadcastReceiver() {
+        private val weakNavigation: WeakReference<MapVinaNavigation> = WeakReference(navigation)
+
+        override fun onReceive(context: Context, intent: Intent) {
+            weakNavigation.get()?.stopNavigation()
+        }
+    }
+
+    private fun newOrigin() {
+        mapVinaMap.let {
+            val latLng = LatLng(52.039176, 5.550339)
+            locationEngine.assignLastLocation(
+                Point.fromLngLat(latLng.longitude, latLng.latitude),
+            )
+            it.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12.0))
+        }
+    }
+}

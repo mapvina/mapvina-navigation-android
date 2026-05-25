@@ -17,7 +17,7 @@ With this SDK you can implement turn-by-turn navigation in your own Android app 
 > We are currently active working on converting this pure Android library to a Kotlin Multiplatform library.
 
 <div align="center">
-  <img src="https://github.com/mapvina/mapvina-navigation-android/blob/main/.github/preview.png" height="350px" alt="MapVina Navigation Android">
+  <img src="https://github.io/github/mapvina/mapvina-navigation-android/blob/main/.github/preview.png" height="350px" alt="MapVina Navigation Android">
 </div>
 
 ## License
@@ -38,7 +38,7 @@ All issues are covered with this SDK.
 ## What have we changed
 
 - We completely removed the UI part from the SDK so it will only contain the logic for navigation and not the visuals.
-- We upgraded the [Mapbox Maps SDK for Android](https://github.com/mapbox/mapbox-gl-native/tree/master/platform/android) to [MapVina Native for Android](https://github.com/mapvina/mapvina-gl-native/tree/master/platform/android) version 9.4.0.
+- We upgraded the [Mapbox Maps SDK for Android](https://github.com/mapbox/mapbox-gl-native/tree/master/platform/android) to [MapVina Native for Android](https://github.io/github/mapvina/mapvina-gl-native/tree/master/platform/android) version 9.4.0.
 - We upgraded the [NavigationRoute](https://github.com/flitsmeister/flitsmeister-navigation-android/blob/master/libandroid-navigation/src/main/java/com/mapbox/services/android/navigation/v5/navigation/NavigationRoute.java#L425) 
  with the possibility to add an interceptor to the request.
 - We changed the [locationLayerPlugin](https://github.com/mapbox/mapbox-plugins-android) to the [location component](https://docs.mapbox.com/android/api/map-sdk/8.5.0/com/mapbox/mapboxsdk/location/LocationComponent.html)
@@ -54,29 +54,29 @@ This library is available on Maven Central. To use it, add the following to your
 Step 2. Add the dependency
 ```groovy
   // Core KMP library (without UI)
-  implementation 'com.mapvina.navigation:navigation-core:5.0.0-pre10'
+  implementation 'io.github.mapvina.navigation:navigation-core:5.0.0-pre10'
 
   // UI library (Android only)
-  implementation 'com.mapvina.navigation:navigation-ui-android:5.0.0-pre10'
+  implementation 'io.github.mapvina.navigation:navigation-ui-android:5.0.0-pre10'
 ```
 
 
 ## Getting Help
 
-- **Have a bug to report?** [Open an issue](https://github.com/mapvina/mapvina-navigation-android/issues). If possible, include the version of MapVina Services, a full log, and a project that shows the issue.
-- **Have a feature request?** [Open an issue](https://github.com/mapvina/mapvina-navigation-android/issues/new). Tell us what the feature should do and why you want the feature.
+- **Have a bug to report?** [Open an issue](https://github.io/github/mapvina/mapvina-navigation-android/issues). If possible, include the version of MapVina Services, a full log, and a project that shows the issue.
+- **Have a feature request?** [Open an issue](https://github.io/github/mapvina/mapvina-navigation-android/issues/new). Tell us what the feature should do and why you want the feature.
 
 ### Samples
 
 #### Android
 
-We have added [an Android example app](https://github.com/mapvina/mapvina-navigation-android/tree/main/app/src/main/java/org/mapvina/navigation/android/example) to this repo.
+We have added [an Android example app](https://github.io/github/mapvina/mapvina-navigation-android/tree/main/app/src/main/java/io/github/mapvina/navigation/android/example) to this repo.
 
 The Valhalla example is aready pre-configured. All other examples needs to be configured with your own tile and direction server. This URLs needs to be set in `developer-config.xml`, which is generated on first Gradle run. 
 
 #### Multiplatform
 
-The new Kotlin Multiplatform library for iOS and Android has it's own small [sample apps](https://github.com/mapvina/mapvina-navigation-android/tree/main/sample) for all supported platforms.
+The new Kotlin Multiplatform library for iOS and Android has it's own small [sample apps](https://github.io/github/mapvina/mapvina-navigation-android/tree/main/sample) for all supported platforms.
 
 ### Contributing
 

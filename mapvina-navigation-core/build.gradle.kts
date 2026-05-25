@@ -67,7 +67,7 @@ kotlin {
     // cocoapods {
     //     version = project.properties.get("versionName") as String? ?: "0.0.0"
     //     summary = "MapVina navigation core library"
-    //     homepage = "https://github.com/mapvina/mapvina-navigation-android/"
+    //     homepage = "https://github.io/github/mapvina/mapvina-navigation-android/"
     // 
     //     name = "MapVinaNavigationCore"
     // 
@@ -83,7 +83,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.mapvina.navigation.core"
+    namespace = "io.github.mapvina.navigation.core"
 
     defaultConfig {
         compileSdk = 35

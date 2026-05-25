@@ -10,4 +10,4 @@
 -dontwarn com.fasterxml.jackson.core.**
 
 # --- MapVina ---
--dontwarn com.mapvina.navigation.android.ui.v5.**
+-dontwarn io.github.mapvina.navigation.android.ui.v5.**

@@ -19,7 +19,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.mapvina.navigation.android.example"
+    namespace = "io.github.mapvina.navigation.android.example"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -27,7 +27,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.mapvina.navigation.android.example"
+        applicationId = "io.github.mapvina.navigation.android.example"
         compileSdk = 35
         minSdk = 23
 

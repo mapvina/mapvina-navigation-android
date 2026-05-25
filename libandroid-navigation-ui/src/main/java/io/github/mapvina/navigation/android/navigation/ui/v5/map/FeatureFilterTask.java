@@ -1,0 +1,32 @@
+package io.github.mapvina.navigation.android.navigation.ui.v5.map;
+
+import android.os.AsyncTask;
+
+import io.github.mapvina.geojson.Feature;
+import io.github.mapvina.geojson.Point;
+import io.github.mapvina.navigation.core.location.Location;
+
+import java.util.List;
+
+class FeatureFilterTask extends AsyncTask<Void, Void, Feature> {
+
+  private final WaynameFeatureFilter filter;
+  private final OnFeatureFilteredCallback callback;
+
+  FeatureFilterTask(List<Feature> queriedFeatures, Location currentLocation,
+                    List<Point> currentStepPoints, OnFeatureFilteredCallback callback) {
+    filter = new WaynameFeatureFilter(queriedFeatures, currentLocation, currentStepPoints);
+    this.callback = callback;
+  }
+
+  @Override
+  protected Feature doInBackground(Void... voids) {
+    return filter.filterFeatures();
+  }
+
+  @Override
+  protected void onPostExecute(Feature feature) {
+    super.onPostExecute(feature);
+    callback.onFeatureFiltered(feature);
+  }
+}

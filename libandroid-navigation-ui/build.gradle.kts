@@ -18,7 +18,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.mapvina.navigation.android.navigation.ui.v5"
+    namespace = "io.github.mapvina.navigation.android.navigation.ui.v5"
 
     defaultConfig {
         compileSdk = 35
@@ -113,7 +113,7 @@ dependencies {
 // Exclude old version of GeoJSON libs if any conflicts remain, but keep JVM geojson and turf for navigation compatibility
 configurations {
     configureEach {
-        // Excludes removed since namespaces were safely moved under distinct package names org.mapvina.geojson and com.mapvina.spatialk.geojson
+        // Excludes removed since namespaces were safely moved under distinct package names io.github.mapvina.geojson and io.github.mapvina.spatialk.geojson
     }
 }
 

@@ -1,0 +1,23 @@
+package io.github.mapvina.navigation.core.navigation
+
+import co.touchlab.kermit.Logger
+import io.github.mapvina.navigation.core.models.DirectionsResponse
+import io.github.mapvina.navigation.core.route.FasterRoute
+import io.github.mapvina.navigation.core.route.RouteListener
+import io.github.mapvina.navigation.core.routeprogress.RouteProgress
+
+open class NavigationFasterRouteListener(
+    private val eventDispatcher: NavigationEventDispatcher,
+    private val fasterRouteEngine: FasterRoute
+) : RouteListener {
+
+    override fun onResponseReceived(response: DirectionsResponse, routeProgress: RouteProgress) {
+        if (fasterRouteEngine.isFasterRoute(response, routeProgress)) {
+            eventDispatcher.onFasterRouteEvent(response.routes.first())
+        }
+    }
+
+    override fun onErrorReceived(throwable: Throwable) {
+        Logger.e(throwable) { "Error occurred fetching a faster route" }
+    }
+}

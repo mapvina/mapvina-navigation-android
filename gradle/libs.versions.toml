@@ -42,9 +42,9 @@ nexus = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexus" }
 # KMP
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
 kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
-mapvina-geojson = { group = "io.github.mapvina.spatialk", name = "geojson", version = "0.1.0.0+c02be5c+DIRTY" }
-mapvina-geojson-turf = { group = "io.github.mapvina.spatialk", name = "turf", version = "0.1.0.0+c02be5c+DIRTY" }
-mapvina-geojson-polyline = { group = "io.github.mapvina.spatialk", name = "polyline-encoding", version = "0.1.0.0+c02be5c+DIRTY" }
+mapvina-geojson = { group = "io.github.mapvina.spatialk", name = "geojson", version = "1.0.0" }
+mapvina-geojson-turf = { group = "io.github.mapvina.spatialk", name = "turf", version = "1.0.0" }
+mapvina-geojson-polyline = { group = "io.github.mapvina.spatialk", name = "polyline-encoding", version = "1.0.0" }
 kermit = { group = "co.touchlab", name = "kermit", version.ref = "kermit" }
 
 # Android

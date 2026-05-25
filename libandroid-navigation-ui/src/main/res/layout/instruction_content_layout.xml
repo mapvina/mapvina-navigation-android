@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.mapvina.navigation.android.navigation.ui.v5.instruction.maneuver.ManeuverView
+        <io.github.mapvina.navigation.android.navigation.ui.v5.instruction.maneuver.ManeuverView
             android:id="@+id/maneuverView"
             android:layout_width="40dp"
             android:layout_height="40dp"

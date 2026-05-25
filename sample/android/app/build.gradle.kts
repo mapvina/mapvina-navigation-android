@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.mapvina.navigation.sample.android"
+    namespace = "io.github.mapvina.navigation.sample.android"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.mapvina.navigation.sample.android"
+        applicationId = "io.github.mapvina.navigation.sample.android"
         minSdk = 28
         targetSdk = 35
         versionCode = 1

@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mapvina.navigation.android.navigation.ui.v5">
+    package="io.github.mapvina.navigation.android.navigation.ui.v5">
 
     <application>
-        <activity android:name="com.mapvina.navigation.android.navigation.ui.v5.MapVinaNavigationActivity" />
+        <activity android:name="io.github.mapvina.navigation.android.navigation.ui.v5.MapVinaNavigationActivity" />
 
         <service
             android:name=".notification.service.NavigationNotificationService"
