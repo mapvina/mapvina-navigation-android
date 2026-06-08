@@ -5,7 +5,7 @@ target 'ML Nav - iOS Sample App' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'MapVina', '~> 6.10.0'
+  pod 'MapVina', '~> 1.0.0'
   pod 'MapVinaNavigationCore', :path => '../../mapvina-navigation-core/'
   
   pod 'Alamofire', '~> 5.10.2'
