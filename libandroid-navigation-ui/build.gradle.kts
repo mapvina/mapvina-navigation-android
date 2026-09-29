@@ -81,8 +81,8 @@ dependencies {
 
     api(libs.mapvina.annotation)
     implementation(libs.mapvina)
-    implementation("io.github.mapvina:android-sdk-geojson:1.0.0")
-    implementation("io.github.mapvina:android-sdk-turf:1.0.0")
+    implementation("io.github.mapvina:android-sdk-geojson:1.0.1")
+    implementation("io.github.mapvina:android-sdk-turf:1.0.1")
 
     // Mapbox SDKs (needed for requests)
     api(libs.mapbox.geojson)
