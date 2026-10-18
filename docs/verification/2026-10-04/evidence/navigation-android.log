@@ -1,0 +1,74 @@
+Raw log SHA-256: 338ab78ef5c93a1eb7022ef060ff8b6cbf1b55b5385a9f3daac32942129cc8d6
+Excerpt only; full output retained outside Git in the local audit directory.
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+
+> Configure project :
+w: file://$AUDIT/navigation-checkout/build.gradle.kts:37:1: 'task(String, noinline type.() -> Unit): type' is deprecated. Use tasks.register instead
+w: file://$AUDIT/navigation-checkout/build.gradle.kts:38:24: 'getter for buildDir: File!' is deprecated. Deprecated in Java
+
+... selected diagnostic lines ...
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/androidMain/kotlin/io/github/mapvina/navigation/core/location/engine/MapVinaLocationEngine.kt:9:26 Unresolved reference 'android'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/androidMain/kotlin/io/github/mapvina/navigation/core/location/engine/MapVinaLocationEngine.kt:10:26 Unresolved reference 'android'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/androidMain/kotlin/io/github/mapvina/navigation/core/location/engine/MapVinaLocationEngine.kt:11:26 Unresolved reference 'android'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/androidMain/kotlin/io/github/mapvina/navigation/core/location/engine/MapVinaLocationEngine.kt:12:26 Unresolved reference 'android'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/androidMain/kotlin/io/github/mapvina/navigation/core/location/engine/MapVinaLocationEngine.kt:34:41 Unresolved reference 'MapVinaFusedLocationEngineImpl'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/androidMain/kotlin/io/github/mapvina/navigation/core/location/engine/MapVinaLocationEngine.kt:50:13 Unresolved reference 'LocationEngineCallback'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/androidMain/kotlin/io/github/mapvina/navigation/core/location/engine/MapVinaLocationEngine.kt:50:36 Unresolved reference 'LocationEngineResult'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/androidMain/kotlin/io/github/mapvina/navigation/core/location/engine/MapVinaLocationEngine.kt:51:13 'onSuccess' overrides nothing.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/androidMain/kotlin/io/github/mapvina/navigation/core/location/engine/MapVinaLocationEngine.kt:51:58 Unresolved reference 'LocationEngineResult'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/androidMain/kotlin/io/github/mapvina/navigation/core/location/engine/MapVinaLocationEngine.kt:52:58 Unresolved reference 'lastLocation'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/androidMain/kotlin/io/github/mapvina/navigation/core/location/engine/MapVinaLocationEngine.kt:55:13 'onFailure' overrides nothing.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/androidMain/kotlin/io/github/mapvina/navigation/core/location/engine/MapVinaLocationEngine.kt:61:76 Unresolved reference 'MapVinaLocationRequest'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/androidMain/kotlin/io/github/mapvina/navigation/core/location/engine/MapVinaLocationEngine.kt:62:16 Unresolved reference 'MapVinaLocationRequest'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/androidMain/kotlin/io/github/mapvina/navigation/core/location/engine/MapVinaLocationEngine.kt:72:56 Unresolved reference 'MapVinaLocationRequest'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/androidMain/kotlin/io/github/mapvina/navigation/core/location/engine/MapVinaLocationEngine.kt:73:52 Unresolved reference 'MapVinaLocationRequest'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/androidMain/kotlin/io/github/mapvina/navigation/core/location/engine/MapVinaLocationEngine.kt:74:57 Unresolved reference 'MapVinaLocationRequest'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/androidMain/kotlin/io/github/mapvina/navigation/core/location/engine/MapVinaLocationEngine.kt:75:53 Unresolved reference 'MapVinaLocationRequest'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/Location.kt:3:26 Unresolved reference 'spatialk'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/Location.kt:74:16 Unresolved reference 'Point'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/Location.kt:75:17 Unresolved reference 'Point'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:3:26 Unresolved reference 'spatialk'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:4:26 Unresolved reference 'spatialk'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:8:26 Unresolved reference 'spatialk'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:9:26 Unresolved reference 'spatialk'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:10:26 Unresolved reference 'spatialk'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:11:26 Unresolved reference 'spatialk'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:12:26 Unresolved reference 'spatialk'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:13:26 Unresolved reference 'spatialk'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:14:26 Unresolved reference 'spatialk'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:15:26 Unresolved reference 'spatialk'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:57:32 Unresolved reference 'LineString'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:57:50 Unresolved reference 'Point'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:58:24 Unresolved reference 'coordinates'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:59:20 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:62:41 Unresolved reference 'length'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:62:59 Unresolved reference 'Meters'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:64:20 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:67:33 Unresolved reference 'Point'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:67:42 Cannot infer type for type parameter 'E'. Specify it explicitly.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:70:36 Unresolved reference 'locateAlong'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:70:50 Unresolved reference 'meters'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:77:45 Unresolved reference 'Point'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:84:50 Unresolved reference 'bearingTo'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:84:73 Unresolved reference 'Bearing'.
+e: file://$AUDIT/navigation-checkout/mapvina-navigation-core/src/commonMain/kotlin/io/github/mapvina/navigation/core/location/replay/ReplayRouteLocationConverter.kt:84:97 Too many arguments for 'fun String.toDouble(): Double'.
+... final output ...
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.13/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 2m 17s
+29 actionable tasks: 29 executed
+
+EXIT_CODE=1
